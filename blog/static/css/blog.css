@@ -51,6 +51,7 @@ h4 {
     float: right;
     font-size: 26pt;
     margin-right: 20px;
+    width: 40px;
 }
 
 .post {
@@ -59,12 +60,12 @@ h4 {
 
 .post h2 a,
 .post h2 a:visited {
-    color: #0073f7;
+    color: #000000;
 }
 
 .post>.date,
 .post>.actions {
-    float: left;
+    float: right;
 }
 
 .btn-secondary,
