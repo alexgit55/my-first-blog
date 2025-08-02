@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
+      - name: Run Django migrations
+        run: python manage.py migrate
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Upload artifact for deployment jobs
@@ -68,4 +71,5 @@ jobs:
         with:
           app-name: 'django-blog-tutorial'
           slot-name: 'Production'
+
           
