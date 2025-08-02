@@ -34,6 +34,9 @@ jobs:
         
       - name: Run Django migrations
         run: python manage.py migrate
+
+      - name: Update Static files
+        run: python manage.py collectstatic
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -73,3 +76,4 @@ jobs:
           slot-name: 'Production'
 
           
+
