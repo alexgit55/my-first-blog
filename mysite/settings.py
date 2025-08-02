@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^c5hn8sqbsa@1#_*vsff9v00sptfhe9!9!h)wrh8e(n&qe-wha'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-tutorial-czapgtg8cdaaacgc.eastus-01.azurewebsites.net']  # Change this to your domain or IP in production
 
