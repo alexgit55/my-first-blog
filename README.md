@@ -6,8 +6,10 @@ It is creating a blog website using python with django, as well as structuring w
 
 ## Features
 - Create a blog application based on the Django framework in Python
+- Customized formatting with html and css
 - Save blog posts in an sqlite database
 - Ability to create, edit and delete posts directly from application
+- Basic authentication to prevent unauthorized creating and editing to blog
 - Application is published using Azure App service
 
 ## History
@@ -33,3 +35,8 @@ a change to the tutorial since my posts were publishing at first.  They talk abo
 used github copilot to review and was able to get it setup correctly.  I also made a change where when publishing, instead of going to the post_detail page, it refreshes the draft list 
 page so I could verify that the post has been removed from drafts. I like this much better so I can see that it was cleared out. The next assignment is going to be making the site more
 secure. I'll post here on that next.
+
+Awesome, I've successfully added more security to the site.  This involved adding buttons to login and logout to the top border.  Then the buttons that are used for making changes to the
+blog, new/edit/delete, are only visible if you're logged in. As additional security and recommended best practice, i moved the secret key to a separate environment variable instead of 
+directly in the source code.  That way it can read the key from the environment that it's running in instead. I feel very accomplished at being able to go through these, with help
+of course.
