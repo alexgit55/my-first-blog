@@ -13,3 +13,10 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('author', 'text',)
+
+class LoggedInCommentForm(forms.ModelForm):
+    """Form for logged-in users - no author field needed"""
+    
+    class Meta:
+        model = Comment
+        fields = ('text',)

@@ -32,9 +32,19 @@
     <p>{{ post.text|linebreaksbr }}</p>
 </article>
 <hr>
+<h3>Add a comment</h3>
 <form method="post" action="{% url 'add_comment_to_post' post.pk %}">
     {% csrf_token %}
+    {% if user.is_authenticated %}
+    <p><strong>Commenting as:</strong> {{ user.username }}</p>
+    <div class="form-group">
+        {{ form.text.label_tag }}
+        {{ form.text }}
+    </div>
+    {% else %}
     {{ form.as_p }}
+    <p><em>You can also <a href="{% url 'login' %}">log in</a> to comment with your username automatically.</em></p>
+    {% endif %}
     <button type="submit" class="btn btn-primary">Add Comment</button>
 </form>
 {% for comment in post.comments.all %}

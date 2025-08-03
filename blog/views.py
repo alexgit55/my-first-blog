@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, LoggedInCommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
@@ -67,14 +67,29 @@ def post_remove(request, pk):
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect('post_detail', pk=post.pk)
+        if request.user.is_authenticated:
+            # For logged-in users, use the simplified form
+            form = LoggedInCommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.author = request.user.username
+                comment.save()
+                return redirect('post_detail', pk=post.pk)
+        else:
+            # For anonymous users, use the full form
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.save()
+                return redirect('post_detail', pk=post.pk)
     else:
-        form = CommentForm()
+        # Initialize the appropriate form
+        if request.user.is_authenticated:
+            form = LoggedInCommentForm()
+        else:
+            form = CommentForm()
     return render(request, 'blog/post_detail.html', {'post': post, 'form': form})
 
 @login_required

@@ -132,3 +132,41 @@ small button:hover {
     color: #ffffff;
     text-decoration: none;
 }
+
+/* Comment form styling */
+.comment {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #274C77;
+    border-radius: 4px;
+}
+
+.comment .date {
+    color: #6c757d;
+    font-size: 12pt;
+    margin-bottom: 5px;
+}
+
+.comment strong {
+    color: #274C77;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #274C77;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
