@@ -1,0 +1,133 @@
+h1 a,
+h2 a {
+    color: #C25100;
+    font-family: 'Lobster', sans-serif;
+}
+
+body {
+    padding-left: 15px;
+}
+
+.page-header {
+    background-color: #C25100;
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-buttons .user-greeting {
+    color: #ffffff !important;
+    font-family: 'Lobster', cursive !important;
+    font-size: 18pt !important;
+}
+
+.user-greeting {
+    color: #ffffff !important;
+    font-family: 'Lobster', cursive !important;
+    font-size: 18pt !important;
+    margin-right: 10px;
+}
+
+.page-header .user-greeting {
+    color: #ffffff;
+    font-family: 'Lobster', cursive;
+    font-size: 18pt;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea,
+.post-form input {
+    width: 100%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+    color: #ffffff;
+    font-size: 26pt;
+    width: 40px;
+    text-decoration: none;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+    color: #000000;
+}
+
+.post>.date,
+.post>.actions {
+    float: right;
+}
+
+.btn-secondary,
+.btn-secondary:visited {
+    color: #C25100;
+    background: none;
+    border-color: #C25100;
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    color: #FFFFFF;
+    background-color: #C25100;
+}
+
+#logout,
+.logout-section {
+    font-family: 'Lobster', cursive;
+}
+
+small a,
+small a:hover,
+small a:visited,
+small button,
+small button:hover {
+    font-size: 15pt;
+    color: #ffffff;
+    text-decoration: none;
+}
