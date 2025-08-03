@@ -13,14 +13,30 @@
 <body>
     <header class="page-header">
         <div class="container">
-            {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu">
-                {% include './icons/file-earmark-plus.svg' %}
-            </a>
-            <a href="{% url 'post_draft_list' %}" class="top-menu">
-                {% include './icons/pencil-square.svg'%}
-            </a>
-            {% endif %}
+            <div class="header-content">
+                <div class="nav-icons">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="btn btn-success btn-sm">
+                        New Post
+                    </a>
+                    <a href="{% url 'post_draft_list' %}" class="btn btn-warning btn-sm">
+                        Drafts
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="auth-buttons">
+                    {% if user.is_authenticated %}
+                    <span class="user-greeting">Hello {{ user.username }}</span>
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Are you sure you want to log out?')">Log out</button>
+                    </form>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Login</a>
+                    {% endif %}
+                </div>
+            </div>
             <h1><a href="/">My First Blog</a></h1>
         </div>
     </header>
