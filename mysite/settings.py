@@ -30,9 +30,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-fallback-secret-key-here')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-tutorial-czapgtg8cdaaacgc.eastus-01.azurewebsites.net']  # Change this to your domain or IP in production
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django-blog-postgres-e5apenc5eqexa7c9.eastus-01.azurewebsites.net']  # Change this to your domain or IP in production
 
-CSRF_TRUSTED_ORIGINS = ['https://django-blog-tutorial-czapgtg8cdaaacgc.eastus-01.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://django-blog-postgres-e5apenc5eqexa7c9.eastus-01.azurewebsites.net']
 
 # Application definition
 
