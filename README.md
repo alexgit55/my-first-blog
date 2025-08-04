@@ -7,10 +7,10 @@ It is creating a blog website using python with django, as well as structuring w
 ## Features
 - Create a blog application based on the Django framework in Python
 - Customized formatting with html and css
-- Save blog posts in an sqlite database
+- Application is published using Azure App service
+- Save blog posts in an sqlite database locally and Postgresql with redis cache and a keyvault in Azure
 - Ability to create, edit and delete posts directly from application
 - Basic authentication to prevent unauthorized creating and editing to blog
-- Application is published using Azure App service
 
 ## History
 
@@ -40,3 +40,7 @@ Awesome, I've successfully added more security to the site.  This involved addin
 blog, new/edit/delete, are only visible if you're logged in. As additional security and recommended best practice, i moved the secret key to a separate environment variable instead of 
 directly in the source code.  That way it can read the key from the environment that it's running in instead. I feel very accomplished at being able to go through these, with help
 of course.
+
+8/4/2025 - I've converted the database from using a simple sqlite database to using Azure Postgresql with redis cache.  I mostly followed along with https://learn.microsoft.com/en-us/azure/app-service/tutorial-python-postgresql-app-django?tabs=copilot&pivots=azure-portal.
+It's configured to keep using sqlite locally, but if it's detected to be running from the app service, the WEBSITE_SITE_NAME value is set, then it uses the postgresql environment variables set up in the app service.  That tutorial also helps with setting up an azure key
+vault to store the database secrets. This site is working well right now. Other features I'd like to learn to add are other users first, and maybe api access in the future.
