@@ -81,12 +81,40 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Check if we're running in Azure App Service (Azure sets WEBSITE_SITE_NAME)
+if os.getenv('WEBSITE_SITE_NAME'):
+    # Production database configuration using Azure Service Connector
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('AZURE_POSTGRESQL_NAME'),
+            'USER': os.getenv('AZURE_POSTGRESQL_USER'),
+            'PASSWORD': os.getenv('AZURE_POSTGRESQL_PASSWORD'),
+            'HOST': os.getenv('AZURE_POSTGRESQL_HOST'),
+            'PORT': os.getenv('AZURE_POSTGRESQL_PORT', '5432'),
+            'OPTIONS': {
+                'sslmode': os.getenv('AZURE_POSTGRESQL_SSL', 'require'),
+            },
+        }
     }
-}
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': os.getenv('AZURE_REDIS_CONNECTIONSTRING', 'redis://127.0.0.1:6379/1'),
+            'OPTIONS': {
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                'COMPRESSOR': 'django_redis.compressors.zlib.ZlibCompressor',
+            }
+        }
+    }
+else:
+    # Local development database configuration
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
